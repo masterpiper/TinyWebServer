@@ -1,4 +1,5 @@
 #include "config.h"
+#include <cstdio>
 
 Config::Config(){
     //端口号,默认9006
@@ -35,7 +36,16 @@ Config::Config(){
 void Config::parse_arg(int argc, char*argv[]){
     int opt;
     const char *str = "p:l:m:o:s:t:c:a:";
+    //p: 表示-p后面要加参数
     while ((opt = getopt(argc, argv, str)) != -1)
+    //getopt用于解析命令行参数
+    //即"$> ./server -p 9006"
+    //return option single
+    //外部变量
+    //optarg：取得“-p”后的参数为char*
+    //optind：argv的索引值
+    //opterr：正常为0，判断是否有无效选项和参数，并输出错误信息
+    //optopt：当opterr！=0时，getopt返回？，optopt存储无效项的字符
     {
         switch (opt)
         {

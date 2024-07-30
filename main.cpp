@@ -1,7 +1,9 @@
 #include "config.h"
+#include <cstdio>
 
 int main(int argc, char *argv[])
 {
+    printf("Let's start\n");
     //需要修改的数据库信息,登录名,密码,库名
     string user = "root";
     string passwd = "\\";
@@ -17,7 +19,7 @@ int main(int argc, char *argv[])
     server.init(config.PORT, user, passwd, databasename, config.LOGWrite, 
                 config.OPT_LINGER, config.TRIGMode,  config.sql_num,  config.thread_num, 
                 config.close_log, config.actor_model);
-    
+    printf("server port: %d\n",config.PORT);
 
     //日志
     server.log_write();
